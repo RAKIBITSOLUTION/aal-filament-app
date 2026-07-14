@@ -1,32 +1,36 @@
 <?php
 
-namespace App\Filament\Resources\Users\Tables;
+namespace App\Filament\Resources\Posts\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ColorColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class UsersTable
+class PostsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable() // Adds a real-time global search bar for names
-                    ->sortable()
+                ImageColumn::make('image')->disk('public'),
+                TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('email')
-                    ->label('Email address')
-                    ->sortable()
+                TextColumn::make('slug')
                     ->searchable(),
-               
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
+                TextColumn::make('category.name')
+                    ->numeric()
+                    ->sortable(),
+                ColorColumn::make('color'),
+
+                IconColumn::make('published')
+                    ->boolean(),
+                TextColumn::make('published_at')
+                    ->date()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -41,9 +45,7 @@ class UsersTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

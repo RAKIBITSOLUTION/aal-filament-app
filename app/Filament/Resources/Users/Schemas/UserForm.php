@@ -21,18 +21,12 @@ class UserForm
                     ->email()
                     ->required()
                     ->unique(ignoreRecord: true), // Prevents duplicate email registration
-                DateTimePicker::make('email_verified_at'),
+
                 TextInput::make('password')
                     ->password()
                     ->required(),
                     // Select Dropdown for Role assignment
-            Select::make('role')
-                ->options([
-                    'admin' => 'Administrator',
-                    'client' => 'Regular Customer',
-                    'moderator' => 'Moderator',
-                ])
-                ->required(),
+           
 
             ]);
     }
