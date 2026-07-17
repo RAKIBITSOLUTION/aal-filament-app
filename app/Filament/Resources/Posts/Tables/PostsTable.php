@@ -35,6 +35,9 @@ class PostsTable
                 TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('tags.name')
+                    ->searchable()
+                    ->sortable(),
                 ColorColumn::make('color'),
 
                 IconColumn::make('published')

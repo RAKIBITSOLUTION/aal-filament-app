@@ -35,6 +35,7 @@ class PostForm
                                 Select::make('category_id')
                                     ->label('Category')
                                     ->relationship('category', 'name')
+                                    ->preload()
                                     ->searchable(),
                             ])->columns(2),
 
@@ -48,13 +49,16 @@ class PostForm
                             ->icon(Heroicon::Photo)
                             ->schema([
                                 FileUpload::make('image')->disk('public'),
-                                TagsInput::make('tags'),
                                 ColorPicker::make('color'),
                             ]),
                         Section::make('Post Settings')
                             ->description('Configure post settings')
                             ->icon(Heroicon::Cog)
                             ->schema([
+                                Select::make('tags')
+                                    ->relationship('tags', 'name')
+                                    ->multiple()
+                                    ->preload(),
                                 Checkbox::make('published'),
                                 DatePicker::make('published_at'),
                             ]),

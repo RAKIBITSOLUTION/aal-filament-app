@@ -19,18 +19,32 @@ return new class extends Migration
             $table->string('color');
             $table->string('image');
             $table->text('body');
-            $table->json('tags');
             $table->boolean('published')->default(false);
             $table->date('published_at');
             $table->timestamps();
         });
+
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
+            $table->primary(['post_id', 'tag_id']);
+        });
+
     }
 
     /**
-     * Reverse the migrations. 
+     * Reverse the migrations.
      */
     public function down(): void
     {
         Schema::dropIfExists('posts');
+        Schema::dropIfExists('tags');
+        Schema::dropIfExists('post_tag');
     }
 };
