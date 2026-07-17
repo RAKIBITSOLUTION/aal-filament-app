@@ -34,9 +34,8 @@ class PostForm
                                 TextInput::make('slug'),
                                 Select::make('category_id')
                                     ->label('Category')
-                                    ->options(Category::all()->pluck('name', 'id')),
-                                ColorPicker::make('color'),
-
+                                    ->relationship('category', 'name')
+                                    ->searchable(),
                             ])->columns(2),
 
                         MarkdownEditor::make('body'),
@@ -50,6 +49,7 @@ class PostForm
                             ->schema([
                                 FileUpload::make('image')->disk('public'),
                                 TagsInput::make('tags'),
+                                ColorPicker::make('color'),
                             ]),
                         Section::make('Post Settings')
                             ->description('Configure post settings')
