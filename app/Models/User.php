@@ -6,12 +6,14 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\State;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +24,26 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'country_id',
+        'state_id',
+        'city_id',
     ];
+
+    // Inside your User class:
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
