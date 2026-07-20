@@ -6,9 +6,6 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\City;
-use App\Models\Country;
-use App\Models\State;
 
 class User extends Authenticatable
 {
@@ -27,6 +24,7 @@ class User extends Authenticatable
         'country_id',
         'state_id',
         'city_id',
+        'type',
     ];
 
     // Inside your User class:
@@ -66,5 +64,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->type === 'admin';
+    }
+
+    public function isManager(): bool
+    {
+        return $this->type === 'manager';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->type === 'user';
     }
 }
