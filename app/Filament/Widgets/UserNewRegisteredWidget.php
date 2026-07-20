@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Filament\Widgets;
+
+use App\Models\User;
+use Filament\Actions\BulkActionGroup;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Filament\Widgets\TableWidget;
+use Illuminate\Database\Eloquent\Builder;
+
+class UserNewRegisteredWidget extends TableWidget
+{
+    protected static ?int $sort = 4;
+
+    protected int|string|array $columnSpan = 'full';
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->query(fn (): Builder => User::query()->latest()->take(5))
+            ->columns([
+                TextColumn::make('name')->label('Name'),
+                TextColumn::make('email')->label('Email'),
+                TextColumn::make('created_at')
+                    ->label('Registered At')
+                    ->dateTime('d M Y H:i'),
+            ])
+            ->filters([
+                //
+            ])
+            ->headerActions([
+                //
+            ])
+            ->recordActions([
+                //
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    //
+                ]),
+            ]);
+    }
+}
