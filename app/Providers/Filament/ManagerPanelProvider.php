@@ -50,6 +50,7 @@ class ManagerPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                'role:manager'
             ])
             ->authMiddleware([
                 Authenticate::class,
