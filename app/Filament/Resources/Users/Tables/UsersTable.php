@@ -24,14 +24,7 @@ class UsersTable
                     ->label('Email address')
                     ->sortable()
                     ->searchable(),
-                // Renders the role column dynamically as a badge
-                TextColumn::make('role')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'admin' => 'danger',  // Red badge for admins
-                        'client' => 'success', // Green badge for clients
-                        default => 'gray',
-                    }),
+               
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
