@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
+use Filament\Auth\MultiFactor\App\Concerns\InteractsWithAppAuthentication;
+use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
+use Filament\Auth\MultiFactor\Email\Concerns\InteractsWithEmailAuthentication;
+use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasAppAuthentication, HasEmailAuthentication
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
+
+    use InteractsWithAppAuthentication;
+    use InteractsWithEmailAuthentication;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -51,6 +58,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'app_authentication_secret',
+        'has_email_authentication',
+
     ];
 
     /**
@@ -63,6 +73,8 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'app_authentication_secret' => 'hashed',
+            'has_email_authentication' => 'boolean',
         ];
     }
 
