@@ -16,6 +16,8 @@ class UsersTable
     {
         return $table
             ->columns([
+                TextColumn::make('id')
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable() // Adds a real-time global search bar for names
                     ->sortable()
@@ -24,7 +26,7 @@ class UsersTable
                     ->label('Email address')
                     ->sortable()
                     ->searchable(),
-               
+
                 TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
