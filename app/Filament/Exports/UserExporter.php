@@ -18,7 +18,15 @@ class UserExporter extends Exporter
             ExportColumn::make('id'),
             ExportColumn::make('name'),
             ExportColumn::make('email'),
-
+            ExportColumn::make('password'),
+            ExportColumn::make('remember_token'),
+            ExportColumn::make('created_at'),
+            ExportColumn::make('updated_at'),
+            ExportColumn::make('country_id'),
+            ExportColumn::make('state_id'),
+            ExportColumn::make('city_id'),
+            ExportColumn::make('app_authentication_secret'),
+            ExportColumn::make('has_email_authentication'),
         ];
     }
 

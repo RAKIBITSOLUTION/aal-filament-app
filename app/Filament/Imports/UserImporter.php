@@ -18,6 +18,14 @@ class UserImporter extends Importer
             ImportColumn::make('name'),
             ImportColumn::make('email'),
             ImportColumn::make('password'),
+            ImportColumn::make('remember_token'),
+            ImportColumn::make('created_at'),
+            ImportColumn::make('updated_at'),
+            ImportColumn::make('country_id'),
+            ImportColumn::make('state_id'),
+            ImportColumn::make('city_id'),
+            ImportColumn::make('app_authentication_secret'),
+            ImportColumn::make('has_email_authentication'),
 
         ];
     }
