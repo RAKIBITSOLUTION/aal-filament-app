@@ -2,21 +2,20 @@
 
 namespace App\Filament\Resources\Posts\Schemas;
 
-use App\Models\Category;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-
-
+use Illuminate\Support\Str;
 
 class PostForm
 {
@@ -30,7 +29,13 @@ class PostForm
                     ->schema([
                         Group::make()
                             ->schema([
-                                TextInput::make('title')->rules(['required', 'string', 'max:255']),
+                                TextInput::make('title')->rules(['required', 'string', 'max:255'])
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (string $operation, string $state, Set $set, Get $get) {
+                                        // dd($operation, $state);
+                                        $set('slug', Str::slug($state));
+                                        dd($get('category_id'));
+                                    }),
                                 TextInput::make('slug'),
                                 Select::make('category_id')
                                     ->label('Category')
