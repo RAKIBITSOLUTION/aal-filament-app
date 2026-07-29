@@ -27,13 +27,14 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
             // ->font('Roboto Mono', provider: GoogleFontProvider::class)
-            ->brandLogo(asset('images/logo.svg'))
-            ->favicon(asset('images/logo.svg'))
+            // ->brandLogo(asset('images/logo.svg'))
+            ->favicon(asset('images/fabicon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -66,6 +67,15 @@ class AdminPanelProvider extends PanelProvider
                 EmailAuthentication::make()
                     ->codeExpiryMinutes(2),
             ])
-            ->databaseNotifications();
+            ->databaseNotifications()
+            ->brandName('Admin Panel')
+            ->colors([
+                // Option A: Preset Orange from Filament/Tailwind
+                'primary' => Color::Orange,
+
+                // Option B: Or pass your own primary HEX/RGB if you want a custom shade
+                // 'primary' => '#f97316',
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css');
     }
 }

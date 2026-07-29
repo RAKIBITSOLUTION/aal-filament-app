@@ -1,0 +1,142 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+
+/* Custom Orange Theme Styles */
+@layer components {
+/* ==========================================
+       1. GLOBAL & NAVIGATION STYLES (.fi-sidebar-*)
+       ========================================== */
+    /* Navigation items: Hover state */
+    .fi-sidebar-item-btn:hover {
+        @apply !bg-orange-50/80 !text-orange-600 dark:!bg-orange-950/40 dark:!text-orange-400;
+    }
+
+    /* Active navigation item selection */
+    .fi-sidebar-item-active .fi-sidebar-item-btn {
+        @apply !border-l-4 !border-orange-500 !bg-orange-100/70 !text-orange-700 !font-semibold dark:!bg-orange-950/60 dark:!text-orange-300;
+    }
+
+    /* Active navigation icons */
+    .fi-sidebar-item-active .fi-sidebar-item-icon {
+        @apply !text-orange-500 dark:!text-orange-400;
+    }
+
+    /* Topbar styling with subtle orange tint */
+    .fi-topbar {
+        @apply !bg-gradient-to-r !from-orange-500/10 !via-transparent !to-transparent;
+    }
+
+
+    /* ==========================================
+       2. POPUPS, MODALS & DROPDOWNS
+       ========================================== */
+    /* Dropdown Menus Container (e.g. User Profile Menu, Filters) */
+    .fi-dropdown-panel {
+        @apply !border !border-orange-200/60 dark:!border-orange-900/40 !shadow-lg !rounded-xl;
+    }
+
+    /* Dropdown Item Hover & Focus */
+    .fi-dropdown-list-item:hover,
+    .fi-dropdown-list-item:focus {
+        @apply !bg-orange-50 !text-orange-600 dark:!bg-orange-950/40 dark:!text-orange-400;
+    }
+
+    /* Modal Windows (Dialog popups) */
+    .fi-modal-window {
+        @apply !border-t-4 !border-t-orange-500 !rounded-2xl !shadow-2xl;
+    }
+
+    /* Modal Action Buttons (Close / Confirm) */
+    .fi-modal-close-btn:hover {
+        @apply !text-orange-500;
+    }
+
+    /* Toast Notification Popups (Success/Info alerts) */
+    .fi-no-notification {
+        @apply !border-l-4 !border-l-orange-500 !shadow-md;
+    }
+
+
+    /* ==========================================
+       3. TABLE STYLES (.fi-ta-*)
+       ========================================== */
+    /* Table container card */
+    .fi-ta-ctn {
+        @apply !rounded-xl !border !border-orange-200/60 dark:!border-orange-900/30 !shadow-sm !overflow-hidden;
+    }
+
+    /* Table header row */
+    .fi-ta-header-cell {
+        @apply !bg-orange-50/50 dark:!bg-orange-950/20 !text-orange-900 dark:!text-orange-300 !font-semibold !uppercase !tracking-wider !text-xs;
+    }
+
+    /* Table body row hover effects */
+    .fi-ta-row:hover {
+        @apply !bg-orange-50/40 dark:!bg-orange-950/20;
+    }
+
+    /* Table selection checkboxes when checked */
+    .fi-ta-checkbox-cell input[type="checkbox"]:checked {
+        @apply !bg-orange-500 !border-orange-500 !text-orange-500 focus:!ring-orange-500/40;
+    }
+
+    /* Table pagination links */
+    .fi-ta-pagination-item-active button {
+        @apply !bg-orange-500 !text-white !font-semibold dark:!bg-orange-600;
+    }
+
+
+    /* ==========================================
+       4. FORM STYLES (.fi-fo-*)
+       ========================================== */
+    /* Form input fields & textareas focus states */
+    .fi-fo-text-input input:focus,
+    .fi-fo-select select:focus,
+    .fi-fo-textarea textarea:focus,
+    .fi-fo-rich-editor:focus-within {
+        @apply !border-orange-500 !ring-2 !ring-orange-500/20 dark:!border-orange-500 dark:!ring-orange-500/30;
+    }
+
+    /* Form section headers & fieldset containers */
+    .fi-fo-section {
+        @apply !border-l-4 !border-l-orange-500 !rounded-r-xl !border-t !border-r !border-b !border-orange-200/50 dark:!border-orange-900/30 !bg-white dark:!bg-gray-900;
+    }
+
+    .fi-fo-section-header-heading {
+        @apply !text-orange-950 dark:!text-orange-200 !font-bold;
+    }
+
+    /* Form field label titles */
+    .fi-fo-field-wrp-label label {
+        @apply !text-slate-800 dark:!text-slate-200 !font-medium;
+    }
+
+    /* Toggle switches & radio controls in forms */
+    .fi-fo-toggle button[aria-checked="true"] {
+        @apply !bg-orange-500 dark:!bg-orange-600;
+    }
+
+
+    /* ==========================================
+       5. VIEW / INFOLIST STYLES (.fi-in-*)
+       ========================================== */
+    /* Infolist card / detail section wrappers */
+    .fi-in-entry-wrp {
+        @apply !p-3 !rounded-lg !bg-slate-50/50 dark:!bg-gray-900/50 !border !border-slate-100 dark:!border-gray-800;
+    }
+
+    /* Infolist field titles / labels */
+    .fi-in-entry-wrp-label {
+        @apply !text-orange-900/80 dark:!text-orange-400/80 !text-xs !uppercase !font-semibold !tracking-wide;
+    }
+
+    /* Infolist actual content text */
+    .fi-in-text-entry {
+        @apply !font-medium !text-slate-900 dark:!text-slate-100;
+    }
+
+    /* Infolist sections & tabs */
+    .fi-in-section {
+        @apply !border !border-orange-200/60 dark:!border-orange-900/30 !rounded-xl !overflow-hidden;
+    }
+}
