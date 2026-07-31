@@ -22,7 +22,7 @@ class Dashboard extends BaseDashboard
                         DatePicker::make('endDate'),
                         // ...
                     ])
-                    ->columns(3)
+                    ->columns(2)
                     ->columnSpan('full'),
             ]);
     }
