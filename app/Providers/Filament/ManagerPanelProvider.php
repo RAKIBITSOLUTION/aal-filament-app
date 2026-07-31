@@ -18,6 +18,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Resma\FilamentAwinTheme\FilamentAwinTheme;
 
 class ManagerPanelProvider extends PanelProvider
 {
@@ -50,11 +51,14 @@ class ManagerPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                'role:manager'
+                'role:manager',
             ])
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->topNavigation();
+
+            ->plugins([
+                FilamentAwinTheme::make(),
+            ]);
     }
 }
