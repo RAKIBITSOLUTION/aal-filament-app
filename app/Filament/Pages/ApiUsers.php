@@ -26,9 +26,9 @@ class ApiUsers extends Page implements HasTable
         return $table
             ->records(fn () => $this->apiData())
             ->columns([
-                TextColumn::make('id')->label('Title'),
-                TextColumn::make('name')->label('Slug'),
-                TextColumn::make('email')->label('Category ID'),
+                TextColumn::make('id')->label('ID'),
+                TextColumn::make('name')->label('Name'),
+                TextColumn::make('email')->label('Email'),
             ]);
     }
 
