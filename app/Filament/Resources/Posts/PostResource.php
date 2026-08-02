@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Posts;
 use App\Filament\Resources\Posts\Pages\CreatePost;
 use App\Filament\Resources\Posts\Pages\EditPost;
 use App\Filament\Resources\Posts\Pages\ListPosts;
+use App\Filament\Resources\Posts\RelationManagers\CommentsRelationManager;
 use App\Filament\Resources\Posts\RelationManagers\TagsRelationManager;
 use App\Filament\Resources\Posts\Schemas\PostForm;
 use App\Filament\Resources\Posts\Tables\PostsTable;
@@ -26,9 +27,8 @@ class PostResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-//    protected static string|\UnitEnum|null $navigationGroup = 'Blog';
-        protected static string|\UnitEnum|null $navigationGroup = 'Masters';
-
+    //    protected static string|\UnitEnum|null $navigationGroup = 'Blog';
+    protected static string|\UnitEnum|null $navigationGroup = 'Masters';
 
     public static function getGloballySearchableAttributes(): array
     {
@@ -63,6 +63,8 @@ class PostResource extends Resource
     {
         return [
             TagsRelationManager::class,
+            CommentsRelationManager::class,
+
         ];
     }
 

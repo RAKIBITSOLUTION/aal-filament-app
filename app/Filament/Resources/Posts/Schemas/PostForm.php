@@ -8,6 +8,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
@@ -44,7 +45,8 @@ class PostForm
                                     ->searchable(),
                             ])->columns(2),
 
-                        MarkdownEditor::make('body'),
+                       // MarkdownEditor::make('body'),
+                        Textarea::make('body')->maxLength(255),
                     ])->columnSpan(2),
 
                 Group::make()

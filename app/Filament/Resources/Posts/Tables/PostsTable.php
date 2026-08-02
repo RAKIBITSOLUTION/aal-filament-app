@@ -38,8 +38,11 @@ class PostsTable
                 TextColumn::make('tags.name')
                     ->searchable()
                     ->sortable(),
-                ColorColumn::make('color'),
 
+                TextColumn::make('comments_count')
+                    ->counts('comments'),
+
+                ColorColumn::make('color'),
                 IconColumn::make('published')
                     ->boolean(),
                 TextColumn::make('published_at')
@@ -73,16 +76,15 @@ class PostsTable
             ])
             ->recordActions([
                 Action::make('status')
-                ->schema([
-                    Checkbox::make('published')
-                        ->label('Published')
-                        ->reactive()
-                        ->afterStateUpdated(function ($state, $record) {
-                            $record->published = $state;
-                            $record->save();
-                        }),
-                ])
-                ,
+                    ->schema([
+                        Checkbox::make('published')
+                            ->label('Published')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, $record) {
+                                $record->published = $state;
+                                $record->save();
+                            }),
+                    ]),
                 ViewAction::make(),
                 EditAction::make(),
                 ReplicateAction::make(),
