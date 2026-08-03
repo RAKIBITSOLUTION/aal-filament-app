@@ -35,7 +35,7 @@ class PostForm
                                     ->afterStateUpdated(function (string $operation, string $state, Set $set, Get $get) {
                                         // dd($operation, $state);
                                         $set('slug', Str::slug($state));
-                                        dd($get('category_id'));
+                                        //dd($get('category_id'));
                                     }),
                                 TextInput::make('slug'),
                                 Select::make('category_id')
@@ -45,7 +45,7 @@ class PostForm
                                     ->searchable(),
                             ])->columns(2),
 
-                       // MarkdownEditor::make('body'),
+                        MarkdownEditor::make('body'),
                         Textarea::make('body')->maxLength(255),
                     ])->columnSpan(2),
 

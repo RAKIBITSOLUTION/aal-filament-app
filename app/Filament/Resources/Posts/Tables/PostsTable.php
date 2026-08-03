@@ -23,13 +23,15 @@ class PostsTable
 {
     public static function configure(Table $table): Table
     {
+
         return $table
+            ->defaultSort('title', 'asc')
+            ->defaultSort('created_at', 'desc')
             ->columns([
                 ImageColumn::make('image')->disk('public'),
                 TextColumn::make('title')
-                    ->searchable()
-                    ->sortable()
-                    ->searchable(),
+                    ->searchable(isIndividual: true)
+                    ->sortable(),
                 TextColumn::make('slug')
                     ->searchable(),
                 TextColumn::make('category.name')

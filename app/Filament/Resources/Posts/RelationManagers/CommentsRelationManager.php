@@ -29,6 +29,7 @@ class CommentsRelationManager extends RelationManager
         return $table
             ->columns([
                 TextColumn::make('body'),
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->headerActions([
                 CreateAction::make(),
